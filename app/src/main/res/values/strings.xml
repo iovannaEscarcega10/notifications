@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">notificaciones</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="sign_in">Sign in</string>
+</resources>
