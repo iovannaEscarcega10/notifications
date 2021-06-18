@@ -3,6 +3,7 @@ package com.example.notificaciones;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +34,8 @@ Button btn_login, btn_sign_in;
         btn_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Intent intent = new Intent(MainActivity.this, SignIn.class);
+                startActivity(intent);
             }
         });
 
