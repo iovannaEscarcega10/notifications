@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.media.AudioAttributes;
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 
@@ -41,6 +42,7 @@ public class MyNotification {
     }
 
     public void build(int imgId, String title, String content, PendingIntent pendingIntent){
+
         notificationBuilder.setSmallIcon(imgId)
 //                .setColor(context.getResources().getColor(R.color.colorAccent))
                 .setContentTitle(title)
