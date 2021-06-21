@@ -26,7 +26,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
-        Log.d(TAG, "onNewToken: " + token);
+        Log.d(TAG, "tokennnnnnnnnnnn: " + token);
         saveToken(token);
     }
 
@@ -35,12 +35,19 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 reference.child("uid").setValue(token);
 
     }
-
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
         Log.d(TAG, "onMessageReceived: ");
+
+        String from  = remoteMessage.getFrom();
+
         Map<String, String> data = remoteMessage.getData();
+
+        if (remoteMessage.getNotification() != null){
+            Log.e("Tag", "Hola esto es el titulo" + remoteMessage.getNotification().getTitle());
+            Log.e("Tag", "Hola esto es el cuerpo" + remoteMessage.getNotification().getBody());
+        }
         if (data.size() > 0){
             String title = data.get("title");
             String msg = data.get("message");
@@ -55,13 +62,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private void sendNotification(String title, String msg) {
         Intent intent = new Intent(this, MainActivity.class);
-        Uri notificactionSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        //Uri notificactionSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, MyNotification.NOTIFICATION_ID, intent, PendingIntent.FLAG_ONE_SHOT);
         MyNotification notification = new MyNotification(this, MyNotification.CHANNEL_ID_NOTIFICATIONS);
         notification.build(R.drawable.ic_launcher_foreground, title, msg, pendingIntent);
         notification.addChannel("Notificaciones", NotificationManager.IMPORTANCE_DEFAULT);
         notification.createChannelGroup(MyNotification.CHANNEL_GROUP_GENERAL, R.string.fcm_fallback_notification_channel_label);
-        notification.setSound(notificactionSound, true);
+        //notification.setSound(notificactionSound, true);
         notification.show(MyNotification.NOTIFICATION_ID);
         startActivity(intent);
     }

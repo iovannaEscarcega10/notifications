@@ -57,9 +57,9 @@ Button btn_login, btn_sign_in;
                         //Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
                     }
                 });
-        notificationByTopic();
+        //notificationByTopic();
     }
-    public void notificationByTopic(){
+    /*public void notificationByTopic(){
         FirebaseMessaging.getInstance().subscribeToTopic("prueba");
-    }
+    }*/
 }
