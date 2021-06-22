@@ -75,7 +75,8 @@ public class SignIn extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if (task2.isSuccessful()){
-                                startActivity(new Intent(SignIn.this, ProfileActivity.class));
+                                Intent intent = new Intent(SignIn.this, ProfileActivity.class);
+                                startActivity(intent);
                                 finish();
                             }else {
                                 Toast.makeText(SignIn.this, "No se pudo crear el perfil", Toast.LENGTH_SHORT).show();
